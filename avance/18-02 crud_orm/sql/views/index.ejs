@@ -1,0 +1,42 @@
+<section>
+    <div class="actions-row" style="justify-content:space-between; align-items:center; margin-bottom:1rem">
+        <h2>Lista de Productos</h2>
+        <div>
+            <a href="/create" class="contrast">+ Agregar Producto</a>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (productos && productos.length) { %>
+                <% productos.forEach(venta => { %>
+                    <tr>
+                        <td><%= venta.id %></td>
+                        <td><%= venta.nombre %></td>
+                        <td>$<%= venta.precio %></td>
+                        <td><%= venta.stock %></td>
+                        <td class="table-actions">
+                            <a href="/edit/<%= venta.id %>" class="secondary">Editar</a>
+                            <form action="/delete/<%= venta.id %>" method="POST" style="display:inline" onsubmit="return confirm(<%- JSON.stringify('Eliminar producto ' + venta.nombre + '? Esta acción no se puede deshacer.') %>)">
+                                <button type="submit" class="contrast">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="5">No hay productos aún.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</section>

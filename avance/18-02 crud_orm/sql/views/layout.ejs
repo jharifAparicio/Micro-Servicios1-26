@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vCrud ventas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        .site-hero{ padding:1.25rem; border-radius:0.6rem; color:var(--background); background:linear-gradient(90deg,#4c6ef5 0%,#15aabf 100%); margin:1rem 0; }
+        header .brand{ font-weight:700; font-size:1.1rem }
+        .actions-row{ display:flex; gap:0.75rem; align-items:center; }
+        .table-actions a{ margin-right:0.5rem }
+    </style>
+</head>
+
+<body>
+    <header class="container" role="banner">
+        <nav aria-label="Main navigation">
+            <ul>
+                <li class="brand"><a href="/">vCrud ventas</a></li>
+            </ul>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/create" class="contrast">Agregar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="site-hero">
+            <h1>vCrud ventas</h1>
+            <p class="lead">Administra tus productos — rápido, sencillo y bonito.</p>
+        </section>
+
+        <%- body %>
+    </main>
+
+    <footer class="container">
+        <p>© <span id="year"><%= new Date().getFullYear() %></span> vCrud ventas</p>
+    </footer>
+</body>
+
+</html>
