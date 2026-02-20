@@ -1,0 +1,67 @@
+<article>
+    <header>
+        <h2 style="margin: 0;">Usuarios Activos</h2>
+    </header>
+    
+    <table role="grid">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th style="text-align: right;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (lista.length > 0) { %>
+                <% lista.forEach(u => { %>
+                <tr>
+                    <td><%= u.id %></td>
+                    <td><%= u.name %></td>
+                    <td><%= u.email %></td>
+                    <td style="text-align: right;">
+                        <div class="acciones" style="justify-content: flex-end;">
+                            <a href="/usuarios/edit/<%= u.id %>" data-tooltip="Editar">✏️</a>
+                            <a href="javascript:void(0)" 
+                               onclick="abrirModalEliminar('<%= u.id %>', '<%= u.name %>')" 
+                               data-tooltip="Eliminar" 
+                               class="btn-delete">🗑️</a>
+                        </div>
+                    </td>
+                </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4" style="text-align: center;">No hay usuarios registrados.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</article>
+
+<dialog id="modal-eliminar">
+    <article>
+        <h3>¿Estás seguro?</h3>
+        <p>Vas a eliminar al usuario: <strong id="nombre-usuario-modal"></strong>. Esta acción no se puede deshacer.</p>
+        <footer>
+            <button class="secondary outline" onclick="cerrarModal()">Cancelar</button>
+            <a id="link-eliminar-final" role="button" class="contrast">Eliminar Definitivamente</a>
+        </footer>
+    </article>
+</dialog>
+
+<script>
+    const modal = document.getElementById('modal-eliminar');
+    const nombreTxt = document.getElementById('nombre-usuario-modal');
+    const linkEliminar = document.getElementById('link-eliminar-final');
+
+    function abrirModalEliminar(id, nombre) {
+        nombreTxt.innerText = nombre;
+        linkEliminar.href = `/usuarios/delete/${id}`;
+        modal.showModal(); // Usando la API nativa de dialog
+    }
+
+    function cerrarModal() {
+        modal.close();
+    }
+</script>

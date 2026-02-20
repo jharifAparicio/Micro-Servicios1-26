@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestión de Usuarios</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      ins {
+        color: #10ad1b;
+      } /* Color para el botón de editar */
+      del {
+        color: #d81b60;
+        text-decoration: none;
+      } /* Color para eliminar */
+      .modal-overlay {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="container">
+      <ul>
+        <li><strong>🚀 Micro-JS</strong></li>
+      </ul>
+      <ul>
+        <li><a href="/usuarios">Listado</a></li>
+        <li><a href="/usuarios/create" role="button">Nuevo Usuario</a></li>
+      </ul>
+    </nav>
+
+    <main class="container"><%- body %></main>
+  </body>
+</html>

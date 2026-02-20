@@ -1,0 +1,23 @@
+<article>
+    <header>
+        <h3><%= usuario ? 'Editar Usuario' : 'Nuevo Usuario' %></h3>
+    </header>
+    <form action="/usuarios/save" method="POST">
+        <% if (usuario) { %>
+            <input type="hidden" name="id" value="<%= usuario.id %>">
+        <% } %>
+
+        <label for="name">Nombre Completo</label>
+        <input type="text" id="name" name="name" placeholder="Ej. Jharif ..." 
+               value="<%= usuario ? usuario.name : '' %>" required>
+
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" placeholder="usuario@correo.com" 
+               value="<%= usuario ? usuario.email : '' %>" required>
+
+        <div class="grid">
+            <button type="submit"><%= usuario ? 'Actualizar' : 'Guardar' %></button>
+            <a href="/usuarios" role="button" class="secondary">Regresar</a>
+        </div>
+    </form>
+</article>
